@@ -1,17 +1,29 @@
-const express = require('express')
+const path = require('path');
+const express =require("express");
+const bodyParser =require("body-parser");
+var cors = require("cors");
 
 //Setup and configure app
 const app = express()
-const port = 5000
+const port = process.env.PORT|| 3002;
+app.use(bodyParser.json());
+app.use(cors());
 
 const { exec } = require('child_process');
-exec('dir', {'shell':'powershell.exe'}, (error, stdout, stderr)=> {
+ exec('dir', {'shell':'powershell.exe'}, (error, stdout, stderr)=> {
     // do whatever with stdout
     console.log(stdout);
     app.get('/api', (req, res) => {
-        res.send(stdout)
+
+        console.log("here is api")
+        res.send({data : stdout})
+        //res.json({ message: "Hello from server!" });
       })
 })
 
 //Initialize app
-app.listen(port, () => console.log(`Server listening on port ${port}!`))
+app.listen(port,() => {
+
+  console.log("listen on port: ", port);
+  
+  });
