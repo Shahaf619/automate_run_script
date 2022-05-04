@@ -2,20 +2,18 @@ import React from "react";
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+function App() 
+{
 
   const [data, setData] = React.useState(0);
 
-  
- function getapi() {
-   console.log("hey ")
-   fetch("http://localhost:3002/api")
-      .then((res) => res.json())
-      .then((dataapi) => setData(dataapi.data) );
- }
-
-
-
+  // Get the shell output data
+  function getapi() 
+  {
+    fetch("http://localhost:3002/api")
+    .then((res) => res.json())
+    .then((dataapi) => setData(dataapi.data) );
+  }
 
   return (
     <div className="App">
