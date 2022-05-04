@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.static(path.resolve(__dirname, "../client/build")));
 
 const { exec } = require('child_process');
- exec('dir', {'shell':'powershell.exe'}, (error, stdout, stderr)=> {
+exec('dir', {'shell':'powershell.exe'}, (error, stdout, stderr)=> {
     // do whatever with stdout
     console.log(stdout);
     app.get('/api', (req, res) => {
