@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import UI from './components/Startui';
+import PostRequestExample from './components/post_data.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -11,6 +12,7 @@ root.render(
   <React.StrictMode>
     <App />
     <UI />
+    <PostRequestExample />
   </React.StrictMode>
   
   

@@ -26,6 +26,16 @@ exec('dir', {'shell':'powershell.exe'}, (error, stdout, stderr)=>
     })
 })
 
+
+// Create API for POST data
+app.post('/api2', (req, res) => 
+    {
+      const {data} = req.body;
+        console.log("here is POST api!")
+        console.log(data)
+        res.send({data : "DATA!!!!!"})
+    })
+
 //Initialize app
 app.listen(port,() => 
 {
