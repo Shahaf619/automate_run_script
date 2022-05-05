@@ -33,7 +33,6 @@ app.post('/api2', (req, res) =>
       const {data} = req.body;
         console.log("here is POST api!")
         console.log(data)
-        res.send({data : "DATA!!!!!"})
     })
 
 //Initialize app
