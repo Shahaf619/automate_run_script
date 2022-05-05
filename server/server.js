@@ -15,22 +15,29 @@ app.use(express.static(path.resolve(__dirname, "../client/build")));
 
 const { exec } = require('child_process');
 exec('dir', {'shell':'powershell.exe'}, (error, stdout, stderr)=> 
-{
-    // do whatever with stdout
+ {
+    // do whatever with stdout 
     console.log(stdout);
     app.get('/api', (req, res) => 
     {
-
         console.log("here is api")
         res.send({data : stdout})
         //res.json({ message: "Hello from server!" });
     })
 })
 
+
+// Create API for POST data
+app.post('/api2', (req, res) => 
+    {
+      const {data} = req.body;
+        console.log("here is POST api!")
+        console.log(data)
+        res.send({data : "DATA!!!!!"})
+    })
+
 //Initialize app
 app.listen(port,() => 
 {
-
   console.log("listen on port: ", port);
-  
 });
