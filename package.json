@@ -7,6 +7,9 @@
   },
   "scripts": {
     "start": "node server/server.js",
+    "client": "cd client && npm start",
+    "server": "npm start",
+    "prod": "concurrently \"npm run server\" \"npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client && npm install && npm run build"
   },
