@@ -21,7 +21,7 @@ exec('dir', {'shell':'powershell.exe'}, (error, stdout, stderr)=>
     app.get('/api', (req, res) => 
     {
         console.log("here is api")
-        res.send({data : stdout})
+        res.send({data : "123"})
         //res.json({ message: "Hello from server!" });
     })
 })
