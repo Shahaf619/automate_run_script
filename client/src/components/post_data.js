@@ -1,4 +1,3 @@
-
 function Component() {
 
     var jsonData = {
