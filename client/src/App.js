@@ -10,7 +10,7 @@ function App()
   // Get the shell output data
   function getapi() 
   {//http://localhost:3002
-    fetch("/api3", { 
+    fetch("/api", { 
       method: "GET",
       headers: { "Content-Type": "application/json"} })
     .then((res) => res.json())
