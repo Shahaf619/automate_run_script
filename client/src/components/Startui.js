@@ -9,6 +9,9 @@ const UI = () => {
 
 const Headline = () => {
 
+  // Define variables for the command to run in the shell
+  const [cmd , setCmd] = useState("./run_script");
+
   // Define variables for the seleceted dropdown options  
   const [project, setProject] = useState();
   const [app, setApp] = useState();
@@ -22,7 +25,7 @@ const Headline = () => {
    fetch("http://localhost:3002/api2", {
      method: "POST",
      headers: { "Content-Type": "application/json" },
-     body: JSON.stringify({ data:project}),
+     body: JSON.stringify({ data:cmd}),
    })
      .then((r) => r.json())
      .then((doc) => {
@@ -45,11 +48,11 @@ const Headline = () => {
          <br/>
          <select value={project} onChange={(e) =>
             setProject(e.target.value)}>
-            <option value="LOCATION">LOCATION</option>
-            <option value="EQUIFAX">EQUIFAX</option>
-            <option value="MEMBER">MEMBER</option>
-            <option value="ACCOUNT">ACCOUNT</option>
-            <option value="MSGROUP1">MSGROUP1</option>
+            <option value="location">Location</option>
+            <option value="equifax">Equifax</option>
+            <option value="member">Member</option>
+            <option value="account">Account</option>
+            <option value="msgroup1">MsGroup1</option>
          </select>
          <h4>Selected Region: {project}</h4>
       </center>
@@ -61,9 +64,9 @@ const Headline = () => {
          <br/>
          <select value={app} onChange={(e) =>
             setApp(e.target.value)}>
-            <option value="Fabric">Fabric</option>
-            <option value="Cassandra">Cassandra</option>
-            <option value="Kafka">Kafka</option>
+            <option value="fabric">Fabric</option>
+            <option value="cassandra">Cassandra</option>
+            <option value="kafka">Kafka</option>
          </select>
          <h4>Selected Region: {app}</h4>
       </center>
@@ -126,6 +129,8 @@ const Headline = () => {
    </div>
   );
 };
+
+
 
 export default UI;
 
