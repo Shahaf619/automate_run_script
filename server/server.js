@@ -17,11 +17,11 @@ app.use(express.static(path.resolve(__dirname, "../client/build")));
 //exec('dir', {'shell':'powershell.exe'}, (error, stdout, stderr)=> 
  //{
     // do whatever with stdout 
-    console.log("stdout");
+    console.log("25555");
     app.get('/api', (req, res) => 
     {
         console.log("here is api")
-        res.send({data : "stdout"})
+        res.send({data : "25555"})
         //res.json({ message: "Hello from server!" });
     })
 //})
