@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom/client';
 
 //import Select from 'react-select';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,7 +11,10 @@ const UI = () => {
 const Headline = () => {
 
   // Define variables for the command to run in the shell
-  const [cmd , setCmd] = useState("./run_script");
+  const [cmd , setCmd] = useState("wsl -d Ubuntu-18.04 /mnt/c/Users/ShahafBahar/OneDrive_K2View/Desktop/run_script.sh -h");
+
+  // Define variables for the flags to pass for the script
+  const [p , setP] = useState();
 
   // Define variables for the seleceted dropdown options  
   const [project, setProject] = useState();
@@ -19,9 +23,9 @@ const Headline = () => {
   const [interactive, setInteractive ] = useState();
   const [root , setRoot] = useState();
 
-  function handleClick() {
+  function handleClick() { 
    // Send data to the backend via POST
-  
+   setCmd("wsl -d Ubuntu-18.04 /mnt/c/Users/ShahafBahar/OneDrive_K2View/Desktop/run_script.sh -p " + project)
    fetch("http://localhost:3002/api2", {
      method: "POST",
      headers: { "Content-Type": "application/json" },
@@ -47,7 +51,7 @@ const Headline = () => {
          <br/>
          <br/>
          <select value={project} onChange={(e) =>
-            setProject(e.target.value)}>
+            { setProject(e.target.value); setP(e.target.value)}}>
             <option value="location">Location</option>
             <option value="equifax">Equifax</option>
             <option value="member">Member</option>
@@ -63,7 +67,7 @@ const Headline = () => {
          <br/>
          <br/>
          <select value={app} onChange={(e) =>
-            {setApp(e.target.value); }  } >
+            setApp(e.target.value)}>
             <option value="fabric">Fabric</option>
             <option value="cassandra">Cassandra</option>
             <option value="kafka">Kafka</option>
@@ -115,7 +119,6 @@ const Headline = () => {
       <br/>
       <br/>
       <br/>
-
       <div className="App">  
          <button onClick={handleClick} style={{
             textAlign: 'center',
@@ -129,8 +132,6 @@ const Headline = () => {
    </div>
   );
 };
-
-
 
 export default UI;
 

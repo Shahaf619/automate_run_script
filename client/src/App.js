@@ -10,19 +10,21 @@ function App()
   // Get the shell output data
   function getapi() 
   {//http://localhost:3002
-    fetch("/api3", { 
+    fetch("/api", { 
       method: "GET",
       headers: { "Content-Type": "application/json"} })
     .then((res) => res.json())
     .then((dataapi) => setData(dataapi.data) );
   }
 
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <h2>Click submit to see script's manual first, then click submit again to exectute it</h2>
         <h3 className="display-linebreak">{data}</h3>
-        <button onClick={getapi}>click</button>
+        <button onClick={getapi}>Submit</button>
       </header>
     </div>
   );
